@@ -4,17 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Victoria Digital Solutions</title>
-    <meta
-      name="description"
-      content="Victoria Digital Solutions creates premium websites, digital strategy, and brand experiences for ambitious businesses."
-    />
+    <title>Victoria Digital Solutions | Premium Web Design & Digital Strategy for Ambitious Businesses</title>
+    <meta name="description" content="Victoria Digital Solutions creates premium websites, digital strategy, and brand experiences. We help ambitious businesses convert visitors into customers with strategic UX and compelling design." />
+    <meta name="keywords" content="web design, digital strategy, website development, brand design, digital marketing, Kenya" />
+    <meta name="author" content="Victoria Digital Solutions" />
+    <meta property="og:title" content="Victoria Digital Solutions | Premium Web Design & Digital Strategy" />
+    <meta property="og:description" content="Premium websites and digital strategy that convert visitors into customers. Strategic UX, compelling storytelling, and polished design." />
+    <meta property="og:type" content="business.business" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Victoria Digital Solutions" />
+    <meta name="twitter:description" content="Premium websites and digital strategy for ambitious businesses." />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Victoria Digital Solutions",
+      "description": "Premium web design and digital strategy agency",
+      "url": "https://victoriadigitalsolutions.com",
+      "telephone": "+254704813110",
+      "email": "adikluke@gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Kenya"
+      },
+      "priceRange": "KES 50000 - KES 100000"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -23,14 +44,20 @@
       <header class="site-header">
         <div class="container header-inner">
           <a class="brand" href="#top">
-            <span class="brand-mark">
-              <img src="victoria-logo.png" alt="Victoria Digital logo" class="brand-logo" />
-            </span>
-            <span>VICTORIA DIGITAL SOLUTIONS</span>
+            <div class="brand-content">
+              <span class="brand-mark">
+                <img src="victoria-logo.png" alt="Victoria Digital logo" class="brand-logo" />
+              </span>
+              <div class="brand-text">
+                <span class="brand-name">VICTORIA DIGITAL SOLUTIONS</span>
+                <span class="brand-slogan">Your Digital Presence Partner</span>
+              </div>
+            </div>
           </a>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="#services">Services</a>
             <a href="#about">About</a>
+            <a href="#clients">Clients</a>
             <a href="#contact">Contact</a>
          </nav>
           <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -97,7 +124,7 @@
           </div>
           <div class="container cards-grid">
             <article class="service-card">
-              <h3>Silver</h3>
+              <h3>Bronze</h3>
               <p>Essential website design, responsive build, and a polished launch-ready presence.</p>
               <p class="price">KES 50,000</p>
               <ul>
@@ -107,7 +134,7 @@
               </ul>
             </article>
             <article class="service-card">
-              <h3>Bronze</h3>
+              <h3>Silver</h3>
               <p>Expanded website experience with brand touchpoints and conversion-focused copy guidance.</p>
               <p class="price">KES 70,000</p>
               <ul>
@@ -161,7 +188,14 @@
               <p class="section-subtitle">Let's build together</p>
               <h2>Ready to launch your premium website?</h2>
               <p>Share your goals and we’ll architect a website experience that converts visitors into customers.</p>
-              <p>Email: <a href="mailto:adikluke@gmail.com">adikluke@gmail.com</a></p>
+              <div class="contact-info">
+                <p><strong>Email:</strong></p>
+                <p><a href="mailto:adikluke@gmail.com">adikluke@gmail.com</a></p>
+                <p><a href="mailto:titusadik@gmail.com">titusadik@gmail.com</a></p>
+                <p style="margin-top: 1rem;"><strong>Phone:</strong></p>
+                <p><a href="tel:+254704813110">0704813110</a></p>
+                <p><a href="tel:+254704244657">0704244657</a></p>
+              </div>
             </div>
               <!-- To enable server-side submissions without opening the mail client, set the form's data-endpoint to your Formspree/Netlify function URL.
                 Example: data-endpoint="https://formspree.io/f/your-form-id" -->
@@ -183,6 +217,21 @@
             <div class="form-note" aria-live="polite" style="display:none;margin-top:0.6rem;color:var(--text-secondary);"></div>
           </div>
         </section>
+
+        <section class="clients" id="clients">
+          <div class="container section-head">
+            <p class="section-subtitle">Previous clients</p>
+            <h2>Organizations that trust Victoria Digital.</h2>
+          </div>
+          <div class="container clients-grid">
+            <article class="client-card">
+              <h3>Scire Research</h3>
+              <p class="client-type">Research Consultancy Firm</p>
+              <p>A leading research consultancy firm in Kenya supporting organizations and government to conduct field research, analyze data, and disseminate findings with precision and insight.</p>
+              <p class="client-badge">Strategy &amp; Development</p>
+            </article>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footer">
@@ -190,6 +239,7 @@
           <p>Victoria Digital Solutions © 2026</p>
           <nav class="footer-nav" aria-label="Footer navigation">
             <a href="#services">Services</a>
+            <a href="#clients">Clients</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>

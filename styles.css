@@ -112,7 +112,13 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(174, 241, 224, 0.12), transparent 22%), radial-gradient(circle at bottom right, rgba(201, 168, 76, 0.07), transparent 18%), linear-gradient(180deg, var(--bg-primary) 0%, #0b423b 55%, var(--bg-secondary) 100%);
+  background: 
+    linear-gradient(to bottom right, #0a2e2a 0%, #0d3d36 30%, #0f4a44 50%, #0c3f39 70%, #081e1a 100%),
+    radial-gradient(circle at 15% 30%, rgba(51, 176, 141, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(201, 168, 76, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 50% 100%, rgba(33, 150, 135, 0.1) 0%, transparent 50%);
+  background-attachment: fixed;
+  background-blend-mode: screen, multiply, lighten, normal;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -156,10 +162,35 @@ img {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 700;
+}
+
+.brand-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.brand-slogan {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .brand-mark {
@@ -219,11 +250,13 @@ img {
   padding: 5.5rem 0 4rem;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(13, 64, 58, 0.96), rgba(10, 50, 44, 0.92));
-  background-image: radial-gradient(circle at top left, rgba(174, 241, 224, 0.14), transparent 24%), radial-gradient(circle at bottom right, rgba(51, 176, 141, 0.12), transparent 20%);
+  background: linear-gradient(135deg, rgba(15, 42, 38, 0.95) 0%, rgba(10, 50, 44, 0.92) 50%, rgba(13, 58, 51, 0.95) 100%);
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(113, 212, 182, 0.18) 0%, transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(201, 168, 76, 0.12) 0%, transparent 28%);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(51, 176, 141, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .hero::before {
@@ -420,14 +453,18 @@ textarea:focus-visible {
 
 .services {
   padding: 4rem 0;
-  background: linear-gradient(180deg, rgba(12, 55, 49, 0.98), rgba(14, 68, 60, 0.98));
-  background-image: radial-gradient(circle at top right, rgba(174, 241, 224, 0.12), transparent 22%), radial-gradient(circle at 25% 20%, rgba(51, 176, 141, 0.1), transparent 18%);
+  background: linear-gradient(to bottom right, rgba(8, 35, 30, 0.98) 0%, rgba(12, 48, 42, 0.95) 50%, rgba(10, 40, 36, 0.98) 100%);
+  background-image: 
+    radial-gradient(circle at 30% 50%, rgba(51, 176, 141, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(174, 241, 224, 0.06) 0%, transparent 35%);
 }
 
 .pricing {
   padding: 4rem 0;
-  background: linear-gradient(180deg, rgba(13, 70, 61, 0.96), rgba(10, 50, 44, 0.98));
-  background-image: radial-gradient(circle at top left, rgba(174, 241, 224, 0.12), transparent 24%), radial-gradient(circle at bottom right, rgba(51, 176, 141, 0.08), transparent 22%);
+  background: linear-gradient(to top left, rgba(10, 42, 37, 0.96) 0%, rgba(13, 52, 46, 0.94) 50%, rgba(8, 35, 30, 0.96) 100%);
+  background-image: 
+    radial-gradient(circle at 15% 30%, rgba(113, 212, 182, 0.12) 0%, transparent 38%),
+    radial-gradient(circle at 85% 70%, rgba(201, 168, 76, 0.08) 0%, transparent 32%);
 }
 
 .section-head h2 {
@@ -498,7 +535,10 @@ textarea:focus-visible {
 }
 
 .about {
-  background: linear-gradient(180deg, rgba(10, 53, 47, 0.96), rgba(15, 64, 57, 0.96));
+  background: linear-gradient(135deg, rgba(10, 40, 35, 0.96) 0%, rgba(12, 48, 42, 0.94) 50%, rgba(8, 35, 30, 0.96) 100%);
+  background-image: 
+    radial-gradient(circle at 60% 40%, rgba(51, 176, 141, 0.1) 0%, transparent 35%),
+    radial-gradient(circle at 20% 70%, rgba(174, 241, 224, 0.06) 0%, transparent 30%);
   color: var(--text-primary);
 }
 
@@ -531,9 +571,74 @@ textarea:focus-visible {
   color: var(--text-secondary);
 }
 
+.clients {
+  padding: 4rem 0;
+  background: linear-gradient(to bottom right, rgba(12, 48, 42, 0.96) 0%, rgba(10, 42, 37, 0.94) 50%, rgba(8, 38, 33, 0.96) 100%);
+  background-image: 
+    radial-gradient(circle at 75% 30%, rgba(113, 212, 182, 0.12) 0%, transparent 36%),
+    radial-gradient(circle at 25% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 30%);
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.client-card {
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid rgba(29, 158, 117, 0.12);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.client-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(29, 158, 117, 0.35);
+  box-shadow: 0 20px 40px rgba(51, 176, 141, 0.12);
+}
+
+.client-card h3 {
+  margin: 0 0 0.5rem;
+  color: #102f2b;
+  font-size: 1.3rem;
+}
+
+.client-type {
+  margin: 0 0 1rem;
+  color: var(--teal-base);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.client-card p {
+  margin: 0 0 1.2rem;
+  color: #4f6160;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.client-badge {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(51, 176, 141, 0.1);
+  color: var(--teal-dark);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .contact {
-  background: linear-gradient(180deg, rgba(190, 232, 227, 0.96), rgba(15, 64, 57, 0.98));
-  background-image: radial-gradient(circle at top left, rgba(174, 241, 224, 0.08), transparent 25%);
+  background: linear-gradient(to top right, rgba(10, 42, 37, 0.96) 0%, rgba(13, 52, 46, 0.94) 50%, rgba(8, 35, 30, 0.96) 100%);
+  background-image: 
+    radial-gradient(circle at 20% 60%, rgba(113, 212, 182, 0.13) 0%, transparent 40%),
+    radial-gradient(circle at 80% 40%, rgba(201, 168, 76, 0.09) 0%, transparent 33%);
   color: var(--text-primary);
 }
 
@@ -542,6 +647,35 @@ textarea:focus-visible {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
+}
+
+.contact-info {
+  margin: 1.5rem 0 0 0;
+}
+
+.contact-info p {
+  margin: 0.35rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.contact-info strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.contact-info a {
+  color: var(--teal-mid);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.contact-info a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
 }
 
 .contact-form {
@@ -581,7 +715,7 @@ textarea:focus-visible {
 .site-footer {
   border-top: 1px solid var(--border-white);
   padding: 3rem 0 3.5rem;
-  background: linear-gradient(180deg, rgba(10, 54, 47, 0.96), rgba(5, 34, 30, 0.98));
+  background: linear-gradient(to right, rgba(5, 30, 26, 0.98) 0%, rgba(8, 38, 33, 0.96) 50%, rgba(6, 32, 28, 0.98) 100%);
 }
 
 .footer-inner {
