@@ -19,6 +19,7 @@
   </head>
   <body>
     <div class="page-shell">
+      <a class="skip-link" href="#main" style="position:absolute;left:-999px;top:auto;">Skip to content</a>
       <header class="site-header">
         <div class="container header-inner">
           <a class="brand" href="#top">
@@ -32,7 +33,7 @@
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
          </nav>
-          <button class="nav-toggle" aria-label="Toggle navigation">
+          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -40,7 +41,7 @@
         </div>
       </header>
 
-      <main>
+      <main id="main" role="main">
         <section class="hero" id="top">
           <div class="container hero-grid">
             <div class="hero-copy">
@@ -162,21 +163,24 @@
               <p>Share your goals and we’ll architect a website experience that converts visitors into customers.</p>
               <p>Email: <a href="mailto:adikluke@gmail.com">adikluke@gmail.com</a></p>
             </div>
-            <form class="contact-form" action="#" method="POST">
+              <!-- To enable server-side submissions without opening the mail client, set the form's data-endpoint to your Formspree/Netlify function URL.
+                Example: data-endpoint="https://formspree.io/f/your-form-id" -->
+              <form class="contact-form" action="#" method="POST" role="form" aria-label="Contact form" data-endpoint="/api/contact">
               <label>
                 Name
-                <input type="text" name="name" placeholder="Your name" required />
+                <input type="text" name="name" placeholder="Your name" required aria-required="true" />
               </label>
               <label>
                 Email
-                <input type="email" name="email" placeholder="you@example.com" required />
+                <input type="email" name="email" placeholder="you@example.com" required aria-required="true" />
               </label>
               <label>
                 Message
-                <textarea name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+                <textarea name="message" rows="5" placeholder="Tell us about your project" required aria-required="true"></textarea>
               </label>
               <button class="button button-primary" type="submit">Send message</button>
             </form>
+            <div class="form-note" aria-live="polite" style="display:none;margin-top:0.6rem;color:var(--text-secondary);"></div>
           </div>
         </section>
       </main>

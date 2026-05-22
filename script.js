@@ -8,3 +8,61 @@ if (navToggle && siteNav) {
     navToggle.setAttribute('aria-expanded', expanded);
   });
 }
+
+// Contact form fallback: open user's mail client with a prefilled message to avoid server 405
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name') || '';
+    const email = data.get('email') || '';
+    const message = data.get('message') || '';
+
+    const subject = `Website enquiry from ${name || email}`;
+    const bodyLines = [];
+    if (name) bodyLines.push(`Name: ${name}`);
+    if (email) bodyLines.push(`Email: ${email}`);
+    bodyLines.push('-----');
+    bodyLines.push(message);
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    const mailto = `mailto:adikluke@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      const note = document.querySelector('.form-note');
+
+      // If a server endpoint is configured via data-endpoint, POST to it (Formspree/Netlify). Otherwise fallback to mailto.
+      const endpoint = form.dataset.endpoint && form.dataset.endpoint.trim();
+      if (endpoint && !endpoint.includes('your-form-id')) {
+        // try server submission
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new URLSearchParams({ name, email, message, _subject: subject })
+        }).then(r => {
+          if (r.ok) {
+            if (note) { note.style.display = 'block'; note.textContent = 'Message sent — thank you! We will reply to your email shortly.'; }
+            form.reset();
+          } else {
+            if (note) { note.style.display = 'block'; note.textContent = 'Server rejected the message. Opening your mail client as fallback.'; }
+            setTimeout(() => { window.location.href = mailto; }, 300);
+          }
+        }).catch(() => {
+          if (note) { note.style.display = 'block'; note.textContent = 'Unable to reach server. Opening your mail client as fallback.'; }
+          setTimeout(() => { window.location.href = mailto; }, 300);
+        });
+      } else {
+        if (note) {
+          note.style.display = 'block';
+          note.textContent = 'A new email window should open in your mail app. If it does not, please email adikluke@gmail.com directly.';
+        }
+        setTimeout(() => { window.location.href = mailto; }, 250);
+      }
+  });
+});
+
+// Ensure nav-toggle initial state is reflected for accessibility
+const navToggleBtn = document.querySelector('.nav-toggle');
+if (navToggleBtn && !navToggleBtn.hasAttribute('aria-expanded')) {
+  navToggleBtn.setAttribute('aria-expanded', 'false');
+}

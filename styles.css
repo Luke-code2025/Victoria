@@ -169,9 +169,9 @@ img {
   align-items: center;
   justify-content: center;
   border-radius: 0.85rem;
-  background: linear-gradient(135deg, var(--gold), #a57b30);
-  box-shadow: 0 10px 30px rgba(201, 168, 76, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .brand-logo {
@@ -264,19 +264,20 @@ img {
 .eyebrow {
   display: inline-flex;
   margin-bottom: 1.25rem;
-  color: var(--text-accent);
+  color: var(--teal-mid);
   font-size: 0.95rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .hero h1 {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(2.75rem, 3.8vw, 4.4rem);
+  font-size: clamp(2rem, 3.2vw, 3.2rem);
   line-height: 0.98;
-  letter-spacing: -0.05em;
-  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .hero p {
@@ -308,6 +309,27 @@ img {
 
 .button:hover {
   transform: translateY(-1px);
+}
+
+/* Accessibility: visible focus styles */
+.button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(51,176,141,0.22);
+  outline-offset: 3px;
+}
+
+/* skip-link visible on focus */
+.skip-link:focus {
+  position: static;
+  left: 0;
+  margin: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: #ffffff;
+  color: #0b423b;
+  border-radius: 6px;
+  z-index: 60;
 }
 
 .button-primary {
@@ -410,9 +432,10 @@ img {
 
 .section-head h2 {
   margin: 0;
-  font-size: clamp(2rem, 2.2vw, 2.8rem);
+  font-size: clamp(1.6rem, 2.0vw, 2.2rem);
   line-height: 1.1;
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .cards-grid,
@@ -420,6 +443,13 @@ img {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .cards-grid,
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .service-card,
@@ -453,7 +483,7 @@ img {
 
 .price {
   margin: 1.5rem 0;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--gold);
 }
@@ -581,6 +611,12 @@ img {
   .hero {
     border-radius: 2rem;
   }
+}
+
+/* Make headings less aggressive on small screens */
+@media (max-width: 720px) {
+  .hero h1 { font-size: 1.6rem; }
+  .section-head h2 { font-size: 1.4rem; }
 }
 
 @media (max-width: 720px) {
