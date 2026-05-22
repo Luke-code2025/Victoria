@@ -73,8 +73,13 @@ img {
   justify-content: center;
   border-radius: 0.85rem;
   background: linear-gradient(135deg, #4b8cff, #2dd2b5);
-  color: #07101d;
-  font-size: 1.1rem;
+}
+
+.brand-logo {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  border-radius: 0.7rem;
 }
 
 .site-nav {
