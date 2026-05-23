@@ -1,8 +1,4 @@
-/* ============================================
-   VICTORIA DIGITAL SOLUTIONS
-   Theme: Deep Navy + Teal
-   Paste at the very top of styles.css
-   ============================================ */
+
 
 :root {
 
@@ -250,36 +246,33 @@ img {
   padding: 5.5rem 0 4rem;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(15, 42, 38, 0.95) 0%, rgba(10, 50, 44, 0.92) 50%, rgba(13, 58, 51, 0.95) 100%);
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(113, 212, 182, 0.18) 0%, transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(201, 168, 76, 0.12) 0%, transparent 28%);
+  background: #C6D9F1;
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(51, 176, 141, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: none;
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.08);
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: -12%;
+  top: -16%;
   left: -15%;
-  width: 55%;
-  height: 65%;
-  background: radial-gradient(circle, var(--teal-glow), transparent 55%);
-  filter: blur(40px);
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent 55%);
+  filter: blur(42px);
   pointer-events: none;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -14%;
-  right: -14%;
-  width: 50%;
-  height: 70%;
-  background: radial-gradient(circle, rgba(201, 168, 76, 0.16), transparent 50%);
-  filter: blur(42px);
+  bottom: -16%;
+  right: -15%;
+  width: 55%;
+  height: 75%;
+  background: radial-gradient(circle, rgba(16, 53, 72, 0.12), transparent 45%);
+  filter: blur(44px);
   pointer-events: none;
 }
 
@@ -290,34 +283,59 @@ img {
   align-items: center;
 }
 
+.hero-about .hero-grid {
+  grid-template-columns: 1fr;
+  justify-items: stretch;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.hero-about .hero-panel {
+  margin-top: 2rem;
+  width: min(620px, 100%);
+}
+
 .hero-copy {
-  max-width: 620px;
+  max-width: none;
+  margin: 0 auto;
+  font-family: var(--font-body);
 }
 
 .eyebrow {
   display: inline-flex;
-  margin-bottom: 1.25rem;
-  color: var(--teal-mid);
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
+  margin-bottom: 1.5rem;
+  color: #0a1f1a;
+  font-size: 2.2rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
 }
 
 .hero h1 {
   margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.2vw, 3.2rem);
-  line-height: 0.98;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(2.8rem, 3.2vw, 3.8rem);
+  line-height: 1.12;
   letter-spacing: -0.02em;
-  color: var(--text-secondary);
-  font-weight: 600;
+  color: #0b2430;
+  font-weight: 800;
 }
 
 .hero p {
-  margin: 1.75rem 0 2rem;
-  max-width: 44rem;
-  color: var(--text-secondary);
-  font-size: var(--text-lg);
+  margin: 1.6rem 0 1.8rem;
+  max-width: 100%;
+  color: #25404f;
+  font-size: 1.08rem;
+  line-height: 1.95;
+  font-weight: 400;
+}
+
+.hero-copy p + p {
+  margin-top: 0.9rem;
 }
 
 .hero-actions {
@@ -367,12 +385,12 @@ textarea:focus-visible {
 
 .button-primary {
   color: #ffffff;
-  background: linear-gradient(135deg, var(--teal-base), var(--teal-dark));
-  box-shadow: var(--shadow-teal);
+  background: linear-gradient(135deg, #0d3d5d, #16334a);
+  box-shadow: 0 10px 24px rgba(20, 48, 75, 0.25);
 }
 
 .button-primary:hover {
-  background: linear-gradient(135deg, var(--teal-dark), var(--teal-deeper));
+  background: linear-gradient(135deg, #16334a, #0f2741);
 }
 
 .button-secondary {
@@ -457,6 +475,33 @@ textarea:focus-visible {
   background-image: 
     radial-gradient(circle at 30% 50%, rgba(51, 176, 141, 0.1) 0%, transparent 40%),
     radial-gradient(circle at 70% 80%, rgba(174, 241, 224, 0.06) 0%, transparent 35%);
+}
+
+.featured-outcome {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #09242d 0%, #0f4f44 38%, #103f38 76%, #081f24 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.featured-outcome-inner {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.featured-outcome .panel-card {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 24, 31, 0.95);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.24);
+}
+
+.featured-outcome .panel-card h2 {
+  color: #f6f9f6;
+}
+
+.featured-outcome .panel-card p,
+.featured-outcome .panel-card li {
+  color: #c8ddd4;
 }
 
 .pricing {
