@@ -36,7 +36,7 @@ transporter.verify()
   .catch(err => console.warn('SMTP verification failed (may be ok for some providers):', err && err.message));
 
 app.get('/', (req, res) => {
-  res.send('Victoria Digital email API running');
+  res.send('Apex Digital email API running');
 });
 
 app.post('/api/contact', async (req, res) => {

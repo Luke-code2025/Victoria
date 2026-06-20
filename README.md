@@ -1,4 +1,4 @@
-# Victoria Digital — Node Email Server
+# Apex Digital — Node Email Server
 
 This repository includes a lightweight Node/Express server that accepts contact form submissions and forwards them to an email address via SMTP using `nodemailer`.
 

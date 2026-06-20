@@ -514,10 +514,12 @@ textarea:focus-visible {
 
 .section-head h2 {
   margin: 0;
-  font-size: clamp(1.6rem, 2.0vw, 2.2rem);
-  line-height: 1.1;
-  color: var(--text-secondary);
-  font-weight: 600;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(2.8rem, 3.2vw, 3.8rem);
+  line-height: 1.12;
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .cards-grid,

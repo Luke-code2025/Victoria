@@ -1,5 +1,5 @@
 {
-  "name": "victoria-digital-server",
+  "name": "apex-digital-server",
   "version": "1.0.0",
   "description": "Simple server to forward contact form submissions to email",
   "main": "server.js",
