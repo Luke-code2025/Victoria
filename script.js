@@ -82,3 +82,16 @@ if (navToggleBtn && !navToggleBtn.hasAttribute('aria-expanded')) {
     bubble.addEventListener('animationend', () => bubble.remove());
   });
 })();
+
+// Header nudge animation on nav click to show movement (not fixed)
+(() => {
+  const header = document.querySelector('.site-header');
+  const navLinks = document.querySelectorAll('.site-nav a');
+  if (!header || !navLinks.length) return;
+  navLinks.forEach(a => {
+    a.addEventListener('click', (e) => {
+      header.classList.add('nav-animate');
+      setTimeout(() => header.classList.remove('nav-animate'), 420);
+    });
+  });
+})();
