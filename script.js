@@ -5,7 +5,12 @@ if (navToggle && siteNav) {
   navToggle.addEventListener('click', () => {
     siteNav.classList.toggle('open');
     const expanded = siteNav.classList.contains('open');
-    navToggle.setAttribute('aria-expanded', expanded);
+    navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    // focus first link for better keyboard flow when opened
+    if (expanded) {
+      const first = siteNav.querySelector('a');
+      if (first) first.focus();
+    }
   });
 }
 
