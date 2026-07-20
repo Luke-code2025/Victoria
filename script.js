@@ -66,3 +66,19 @@ const navToggleBtn = document.querySelector('.nav-toggle');
 if (navToggleBtn && !navToggleBtn.hasAttribute('aria-expanded')) {
   navToggleBtn.setAttribute('aria-expanded', 'false');
 }
+
+// Interactive 'dancing' background bubbles on click
+(() => {
+  const colors = ['tech-color-1', 'tech-color-2', 'tech-color-3', 'tech-color-4'];
+  document.addEventListener('pointerdown', (e) => {
+    const bubble = document.createElement('span');
+    bubble.className = 'click-bubble ' + colors[Math.floor(Math.random() * colors.length)];
+    const size = 12 + Math.floor(Math.random() * 48);
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    bubble.style.left = e.clientX + 'px';
+    bubble.style.top = e.clientY + 'px';
+    document.body.appendChild(bubble);
+    bubble.addEventListener('animationend', () => bubble.remove());
+  });
+})();

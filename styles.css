@@ -138,13 +138,13 @@ img {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  position: relative;
+  z-index: 5;
   backdrop-filter: var(--nav-blur);
   background: var(--nav-bg-solid);
   border-bottom: 1px solid var(--border-white);
   box-shadow: var(--shadow-sm);
+  transition: transform 240ms var(--transition-fast);
 }
 
 .header-inner {
@@ -398,6 +398,32 @@ textarea:focus-visible {
   background: rgba(255, 255, 255, 0.04);
   border-color: var(--border-subtle);
 }
+
+/* Click-dancing interactive bubbles */
+.click-bubble {
+  position: fixed;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  animation: bubble-pop 900ms cubic-bezier(.2,.9,.2,1);
+  z-index: 30;
+}
+
+@keyframes bubble-pop {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.95; }
+  60% { transform: translate(-50%, -50%) scale(1.6); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+}
+
+/* tech palette default sizes */
+.tech-color-1 { background: linear-gradient(135deg, var(--teal-base), var(--teal-mid)); }
+.tech-color-2 { background: linear-gradient(135deg, #6be7ff, #6b8cff); }
+.tech-color-3 { background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+.tech-color-4 { background: linear-gradient(135deg, #b38cff, #6bb6ff); }
 
 .button-secondary:hover {
   background: rgba(255, 255, 255, 0.08);
