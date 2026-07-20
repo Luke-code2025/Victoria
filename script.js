@@ -76,6 +76,8 @@ if (navToggleBtn && !navToggleBtn.hasAttribute('aria-expanded')) {
 (() => {
   const colors = ['tech-color-1', 'tech-color-2', 'tech-color-3', 'tech-color-4'];
   document.addEventListener('pointerdown', (e) => {
+    // Ignore clicks on interactive controls to avoid changing background appearance
+    if (e.target && e.target.closest && e.target.closest('button, a.button, .nav-toggle, input, textarea, select, .site-nav')) return;
     const bubble = document.createElement('span');
     bubble.className = 'click-bubble ' + colors[Math.floor(Math.random() * colors.length)];
     const size = 12 + Math.floor(Math.random() * 48);
