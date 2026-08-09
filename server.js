@@ -17,7 +17,7 @@ const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
 const SMTP_USER = process.env.SMTP_USER;
 const SMTP_PASS = process.env.SMTP_PASS;
 const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER;
-const TO_EMAIL = process.env.TO_EMAIL || 'adikluke@gmail.com';
+const TO_EMAIL = process.env.TO_EMAIL || 'alalopoko@gmail.com';
 
 if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
   console.warn('Warning: SMTP credentials are not fully set. Please configure SMTP_HOST, SMTP_USER, SMTP_PASS in .env');

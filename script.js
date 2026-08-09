@@ -1,104 +1,69 @@
 const navToggle = document.querySelector('.nav-toggle');
-const siteNav = document.querySelector('.site-nav');
+const navList = document.querySelector('.nav-list');
 
-if (navToggle && siteNav) {
+if (navToggle && navList) {
   navToggle.addEventListener('click', () => {
-    siteNav.classList.toggle('open');
-    const expanded = siteNav.classList.contains('open');
-    navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    // focus first link for better keyboard flow when opened
-    if (expanded) {
-      const first = siteNav.querySelector('a');
-      if (first) first.focus();
-    }
+    const isOpen = navList.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
   });
+  navList.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    navList.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
 }
 
-// Contact form fallback: open user's mail client with a prefilled message to avoid server 405
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('.contact-form');
-  if (!form) return;
+const contactForm = document.querySelector('#contact-form');
+const formStatus = document.querySelector('.form-status');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const name = data.get('name') || '';
-    const email = data.get('email') || '';
-    const message = data.get('message') || '';
+document.querySelectorAll('a[href="tel:+0704244657"]').forEach((phoneLink) => {
+  phoneLink.href = 'tel:+254704244657';
+  phoneLink.textContent = '+254704244657';
+});
 
-    const subject = `Website enquiry from ${name || email}`;
-    const bodyLines = [];
-    if (name) bodyLines.push(`Name: ${name}`);
-    if (email) bodyLines.push(`Email: ${email}`);
-    bodyLines.push('-----');
-    bodyLines.push(message);
-    const body = encodeURIComponent(bodyLines.join('\n'));
-    const mailto = `mailto:adikluke@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-      const note = document.querySelector('.form-note');
-
-      // If a server endpoint is configured via data-endpoint, POST to it (Formspree/Netlify). Otherwise fallback to mailto.
-      const endpoint = form.dataset.endpoint && form.dataset.endpoint.trim();
-      if (endpoint && !endpoint.includes('your-form-id')) {
-        // try server submission
-        fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new URLSearchParams({ name, email, message, _subject: subject })
-        }).then(r => {
-          if (r.ok) {
-            if (note) { note.style.display = 'block'; note.textContent = 'Message sent — thank you! We will reply to your email shortly.'; }
-            form.reset();
-          } else {
-            if (note) { note.style.display = 'block'; note.textContent = 'Server rejected the message. Opening your mail client as fallback.'; }
-            setTimeout(() => { window.location.href = mailto; }, 300);
-          }
-        }).catch(() => {
-          if (note) { note.style.display = 'block'; note.textContent = 'Unable to reach server. Opening your mail client as fallback.'; }
-          setTimeout(() => { window.location.href = mailto; }, 300);
-        });
-      } else {
-        if (note) {
-          note.style.display = 'block';
-          note.textContent = 'A new email window should open in your mail app. If it does not, please email adikluke@gmail.com directly.';
-        }
-        setTimeout(() => { window.location.href = mailto; }, 250);
-      }
+document.querySelectorAll('.contact-details').forEach((contactDetails) => {
+  contactDetails.querySelectorAll('p').forEach((item) => {
+    const label = item.querySelector('strong')?.textContent.trim();
+    if (label === 'Email') {
+      item.innerHTML = '<strong>Email</strong><br><a href="mailto:alalopoko@gmail.com">alalopoko@gmail.com</a>';
+    }
+    if (label === 'Phone') {
+      item.innerHTML = '<strong>Phone</strong><br><a href="tel:+254704244657">+254704244657</a><br><a href="tel:+254704813110">+254704813110</a>';
+    }
+    if (label === 'Location') {
+      item.innerHTML = '<strong>Location</strong><br>Nairobi, Kenya';
+    }
   });
 });
 
-// Ensure nav-toggle initial state is reflected for accessibility
-const navToggleBtn = document.querySelector('.nav-toggle');
-if (navToggleBtn && !navToggleBtn.hasAttribute('aria-expanded')) {
-  navToggleBtn.setAttribute('aria-expanded', 'false');
+document.querySelectorAll('.site-footer').forEach((footer) => {
+  const contactHeading = [...footer.querySelectorAll('h3')].find((heading) => heading.textContent.trim() === 'Contact');
+  const contactBlock = contactHeading?.parentElement;
+  const contactText = contactBlock?.querySelector('p');
+  if (contactText) {
+    contactText.innerHTML = '<a href="mailto:alalopoko@gmail.com">alalopoko@gmail.com</a><a href="tel:+254704244657">+254704244657</a><a href="tel:+254704813110">+254704813110</a>Nairobi, Kenya';
+  }
+});
+
+if (contactForm && formStatus) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
+    const formData = new FormData(contactForm);
+    const subject = `Website inquiry from ${formData.get('name')}`;
+    const details = [
+      `Full Name: ${formData.get('name')}`,
+      `Business / Organization: ${formData.get('business') || 'Not provided'}`,
+      `Email: ${formData.get('email')}`,
+      `Phone: ${formData.get('phone') || 'Not provided'}`,
+      `Service Needed: ${formData.get('service')}`,
+      `Budget Range: ${formData.get('budget') || 'Not provided'}`,
+      `Preferred Contact Method: ${formData.get('contact-method') || 'Not provided'}`,
+      '',
+      'Project Description:',
+      formData.get('message')
+    ].join('\\n');
+    formStatus.textContent = 'Opening your email app with the inquiry details.';
+    window.location.href = `mailto:alalopoko@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(details)}`;
+  });
 }
-
-// Interactive 'dancing' background bubbles on click
-(() => {
-  const colors = ['tech-color-1', 'tech-color-2', 'tech-color-3', 'tech-color-4'];
-  document.addEventListener('pointerdown', (e) => {
-    // Ignore clicks on interactive controls to avoid changing background appearance
-    if (e.target && e.target.closest && e.target.closest('button, a.button, .nav-toggle, input, textarea, select, .site-nav')) return;
-    const bubble = document.createElement('span');
-    bubble.className = 'click-bubble ' + colors[Math.floor(Math.random() * colors.length)];
-    const size = 12 + Math.floor(Math.random() * 48);
-    bubble.style.width = size + 'px';
-    bubble.style.height = size + 'px';
-    bubble.style.left = e.clientX + 'px';
-    bubble.style.top = e.clientY + 'px';
-    document.body.appendChild(bubble);
-    bubble.addEventListener('animationend', () => bubble.remove());
-  });
-})();
-
-// Header nudge animation on nav click to show movement (not fixed)
-(() => {
-  const header = document.querySelector('.site-header');
-  const navLinks = document.querySelectorAll('.site-nav a');
-  if (!header || !navLinks.length) return;
-  navLinks.forEach(a => {
-    a.addEventListener('click', (e) => {
-      header.classList.add('nav-animate');
-      setTimeout(() => header.classList.remove('nav-animate'), 420);
-    });
-  });
-})();
