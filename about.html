@@ -1,16 +1,181 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>About Apex Digital Solutions | Your Digital Presence Partner</title>
-	<meta name="description" content="Learn how Apex Digital Solutions helps businesses in Kenya and beyond build credible, discoverable and useful digital presences.">
-	<link rel="canonical" href="https://example.com/about.html"><meta property="og:title" content="About Apex Digital Solutions"><meta property="og:description" content="A Kenyan digital-solutions partner for businesses ready to grow online."><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/about.html"><meta name="twitter:card" content="summary">
-	<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Apex Digital Solutions","url":"https://example.com/about.html"}</script>
+	<meta name="description" content="Learn about Apex Digital Solutions, a Kenyan digital-solutions company helping businesses, organizations and professionals build stronger online presences through design, technology and search visibility.">
+	<link rel="canonical" href="https://example.com/about.html">
+	<meta property="og:title" content="About Apex Digital Solutions">
+	<meta property="og:description" content="A Kenyan digital-solutions partner for businesses ready to grow online.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://example.com/about.html">
+	<meta name="twitter:card" content="summary">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Apex Digital Solutions","url":"https://example.com/about.html"}</script>
+	<style>
+		/* Scoped type and hero visual styles for About page */
+		body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+		h1,h2,h3 { font-family: 'Manrope', 'Inter', system-ui, sans-serif; }
+		.about-hero { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; padding-block:clamp(3.5rem,9vw,6.5rem); }
+		.about-hero .hero-content .eyebrow{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+		.about-hero h1{font-size:clamp(2.6rem,6.5vw,4.2rem);line-height:1.05;margin:.25rem 0 1rem}
+		.about-hero .intro{font-size:1.125rem;color:var(--muted);max-width:56ch}
+		.hero-actions{margin-top:1.6rem;display:flex;gap:0.8rem;flex-wrap:wrap}
+		.hero-visual{display:grid;place-items:center}
+		.hero-visual .scene{width:100%;max-width:420px;aspect-ratio:5/4;position:relative}
+		.screen, .phone{position:absolute;border-radius:12px;background:var(--white);box-shadow:0 10px 30px rgba(16,32,43,.06);border:1px solid var(--line);}
+		.screen{width:72%;height:66%;left:6%;top:8%;transform:rotate(-6deg)}
+		.screen .nav{height:48px;background:linear-gradient(90deg,#eaf6f5,#f7f8f5);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 1rem;font-weight:700;color:var(--muted)}
+		.screen .content{padding:1rem}
+		.phone{width:34%;height:68%;right:4%;bottom:6%;transform:rotate(6deg);border-radius:18px}
+		.phone .notch{height:14px;background:linear-gradient(90deg,#f5fbfa,#eef5f4);border-bottom:1px solid var(--line);border-top-left-radius:10px;border-top-right-radius:10px}
+		.chart{position:absolute;right:-6%;top:6%;width:40%;height:40%;opacity:.9;border-radius:8px;border:1px solid rgba(8,127,140,.12);background:linear-gradient(180deg,rgba(8,127,140,.06),transparent)}
+		@media(max-width:900px){.about-hero{grid-template-columns:1fr;padding-block:3rem}.hero-visual{order:-1}}
+
+		/* Reveal animations */
+		.reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+		.reveal.in-view{opacity:1;transform:none}
+		@media (prefers-reduced-motion: reduce){.reveal{transition:none!important}}
+
+		/* Section tweaks for About page */
+		.who-we-are .eyebrow{letter-spacing:.12em}
+		.approach .feature .num{font-weight:900;color:var(--coral);font-size:1.25rem}
+		.belief{padding-block:3.5rem;background:#081218;color:var(--white)}
+		.belief .accent{opacity:.06;font-size:6rem;font-weight:900;position:absolute;right:2rem;top:1rem}
+		.who-serve .card{background:transparent;border:1px solid var(--line);padding:1rem}
+	</style>
 </head>
-<body><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">APEX DIGITAL SOLUTIONS<small>Your Digital Presence Partner</small></a><button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav aria-label="Primary navigation"><ul class="nav-list" id="primary-nav"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li><li><a class="button" href="contact.html">Get a Free Quote</a></li></ul></nav></div></header>
-<main id="main-content"><section class="page-hero"><div class="container"><p class="eyebrow">About Apex Digital Solutions</p><h1>Your Digital Presence Partner</h1><p class="intro">We help businesses, organizations, professionals and individuals in Kenya establish, improve and grow their online presence.</p></div></section>
-<section class="section"><div class="container split"><div><p class="eyebrow">Who we are</p><h2>Digital work grounded in real business needs.</h2></div><div><p class="intro">Apex Digital Solutions is a Kenyan digital-solutions company focused on the work that makes an online presence useful: clear communication, thoughtful design, dependable technology and search visibility.</p><p class="intro">We see a website as part of a bigger business system. It should help people understand your offer, trust your brand and take a meaningful next step.</p></div></div></section>
-<section class="section band"><div class="container split"><div><p class="eyebrow">Our mission</p><h2>Make digital growth more practical.</h2><p>We help businesses use technology to compete with confidence, connect with customers and create opportunities beyond their immediate location.</p></div><div><p class="eyebrow">Our vision</p><h2>A trusted partner for the next stage.</h2><p>We aim to become a dependable digital partner for organizations in Kenya, across Africa and internationally as they build stronger, more useful online experiences.</p></div></div></section>
-<section class="section"><div class="container"><div class="section-header"><p class="eyebrow">What makes us different</p><h2>Strategy, craft and communication in one conversation.</h2></div><div class="grid grid-3"><article class="card"><div class="icon">01</div><h3>Client-centered approach</h3><p>We begin with your audience, goals and context.</p></article><article class="card"><div class="icon">02</div><h3>Modern technology</h3><p>We choose practical tools and clean foundations that can grow with you.</p></article><article class="card"><div class="icon">03</div><h3>SEO-first thinking</h3><p>We build discoverability into structure and content from the start.</p></article><article class="card"><div class="icon">04</div><h3>Business-focused design</h3><p>Every page should support understanding, trust or action.</p></article><article class="card"><div class="icon">05</div><h3>Transparent communication</h3><p>Clear expectations and plain language keep projects moving.</p></article><article class="card"><div class="icon">06</div><h3>Long-term support</h3><p>Launch is a milestone, not the end of the relationship.</p></article></div></div></section>
-<section class="section"><div class="container accent-panel"><p class="eyebrow">Our approach</p><h2>Design, technology, SEO and business understanding.</h2><p>Strong digital work happens where these disciplines meet. We bring them together to create experiences that feel good to use and make sense for the organization behind them.</p><a class="button" href="contact.html">Let's Build Your Digital Future Together</a></div></section></main>
-<footer class="site-footer"><div class="container footer-grid"><div><a class="brand" href="index.html">APEX DIGITAL SOLUTIONS<small>Your Digital Presence Partner</small></a><p>Professional websites and digital solutions for businesses in Kenya and beyond.</p></div><div><h3>Explore</h3><a href="about.html">About Apex</a><a href="services.html">Our Services</a><a href="contact.html">Request a quote</a></div><div><h3>Services</h3><a href="services.html">Website design</a><a href="services.html">SEO services</a><a href="services.html">E-commerce</a></div><div><h3>Contact</h3><p><a href="mailto:alalopoko@gmail.com">alalopoko@gmail.com</a><a href="tel:+0704244657">+0704244657</a><a href="tel:+254704813110">+254704813110</a>Nairobi, Kenya</p></div></div><div class="container copyright">&copy; 2026 Apex Digital Solutions. <a href="#">Privacy Policy</a> <a href="#">Terms &amp; Conditions</a></div></footer><script src="script.js" defer></script></body></html>
+<body>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<header class="site-header">
+		<div class="container nav-wrap"><a class="brand" href="index.html">APEX DIGITAL SOLUTIONS<small>Your Digital Presence Partner</small></a><button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav aria-label="Primary navigation"><ul class="nav-list" id="primary-nav"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li><li><a class="button" href="contact.html">Get a Free Quote</a></li></ul></nav></div>
+	</header>
+
+	<main id="main-content">
+		<!-- HERO -->
+		<section class="page-hero about-hero container">
+			<div class="hero-content">
+				<p class="eyebrow">ABOUT APEX DIGITAL SOLUTIONS</p>
+				<h1>Your Digital Presence Partner</h1>
+				<p class="intro">We help businesses, organizations, professionals and individuals in Kenya establish, improve and grow their online presence.</p>
+				<div class="hero-actions">
+					<a class="button" href="services.html">Explore Our Services</a>
+					<a class="button secondary" href="contact.html">Let's Work Together</a>
+				</div>
+			</div>
+			<div class="hero-visual" aria-hidden="true">
+				<div class="scene" role="presentation">
+					<div class="screen" style="">
+						<div class="nav">Apex — Dashboard</div>
+						<div class="content">
+							<svg width="100%" height="80" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#087f8c" stroke-width="3" points="0,60 30,40 60,50 90,28 120,34 150,22 180,36 200,16"/></svg>
+						</div>
+					</div>
+					<div class="phone">
+						<div class="notch"></div>
+						<div style="padding:10px;font-size:.85rem;color:var(--muted)">
+							<div style="height:8px;background:linear-gradient(90deg,#e9f6f5,#f6fbfa);border-radius:6px;margin-bottom:8px"></div>
+							<div style="height:6px;background:#f0f3f2;border-radius:4px;margin-bottom:6px;width:80%"></div>
+						</div>
+					</div>
+					<div class="chart"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- WHO WE ARE -->
+		<section class="section who-we-are">
+			<div class="container split">
+				<div class="reveal">
+					<p class="eyebrow">WHO WE ARE</p>
+					<h2>Digital work grounded in real business needs.</h2>
+				</div>
+				<div class="reveal">
+					<p class="intro">Apex Digital Solutions is a Kenyan digital-solutions company focused on the work that makes an online presence useful: clear communication, thoughtful design, dependable technology and search visibility.</p>
+					<p class="intro">We see a website as part of a bigger business system. It should help people understand your offer, trust your brand and take a meaningful next step.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- OUR APPROACH -->
+		<section class="section approach">
+			<div class="container">
+				<div class="section-header reveal">
+					<p class="eyebrow">Our approach</p>
+					<h2>Built around what your business needs.</h2>
+				</div>
+				<div class="grid" style="gap:1.25rem">
+					<div class="card feature reveal"><div class="num">01</div><h3>Clarity</h3><p>We make your message easy to understand, so visitors quickly know who you are, what you offer and why it matters.</p></div>
+					<div class="card feature reveal"><div class="num">02</div><h3>Thoughtful Design</h3><p>We create digital experiences that are visually polished, intuitive and aligned with your brand.</p></div>
+					<div class="card feature reveal"><div class="num">03</div><h3>Reliable Technology</h3><p>We build with practical technologies and responsive experiences that work across modern devices.</p></div>
+					<div class="card feature reveal"><div class="num">04</div><h3>Search Visibility</h3><p>We consider SEO from the foundation so your digital presence is built to be discovered, not simply displayed.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- WHAT WE BELIEVE -->
+		<section class="belief">
+			<div class="container" style="position:relative;overflow:hidden">
+				<div class="accent" aria-hidden="true">BELIEF</div>
+				<div class="section-header" style="max-width:68ch;position:relative;z-index:1">
+					<p class="eyebrow">OUR BELIEF</p>
+					<h2>Your website should do more than look good.</h2>
+					<p>It should communicate clearly, build credibility, make it easier for people to engage with you and support the goals of your organization or business.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- WHO WE SERVE -->
+		<section class="section who-serve">
+			<div class="container">
+				<div class="section-header reveal">
+					<p class="eyebrow">Who we serve</p>
+					<h2>Digital solutions for people building something meaningful.</h2>
+				</div>
+				<div class="grid" style="margin-top:1.25rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+					<div class="card"><h3>Businesses</h3><p>Build a credible online presence that helps customers discover and trust your brand.</p></div>
+					<div class="card"><h3>Organizations</h3><p>Communicate your mission, programs and impact clearly online.</p></div>
+					<div class="card"><h3>Professionals</h3><p>Create a digital presence that strengthens your professional reputation.</p></div>
+					<div class="card"><h3>Startups</h3><p>Launch with a digital foundation designed to grow with your business.</p></div>
+					<div class="card"><h3>Non-profits</h3><p>Present your work, impact and opportunities for engagement clearly.</p></div>
+					<div class="card"><h3>Individuals</h3><p>Build a professional personal presence for your ideas, work or projects.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FINAL CTA -->
+		<section class="cta">
+			<div class="container cta-inner">
+				<div>
+					<p class="eyebrow">Ready</p>
+					<h2>Ready to build a stronger digital presence?</h2>
+					<p>Let's create a digital experience that works for your business, organization or professional goals.</p>
+				</div>
+				<div style="display:flex;flex-direction:column;gap:.75rem;align-items:flex-end">
+					<a class="button" href="contact.html">Start a Conversation</a>
+					<a class="button secondary" href="services.html">View Our Services</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container footer-grid"><div><a class="brand" href="index.html">APEX DIGITAL SOLUTIONS<small>Your Digital Presence Partner</small></a><p>Professional websites and digital solutions for businesses in Kenya and beyond.</p></div><div><h3>Explore</h3><a href="about.html">About Apex</a><a href="services.html">Our Services</a><a href="contact.html">Request a quote</a></div><div><h3>Services</h3><a href="services.html">Website design</a><a href="services.html">SEO services</a><a href="services.html">E-commerce</a></div><div><h3>Contact</h3><p><a href="mailto:alalopoko@gmail.com">alalopoko@gmail.com</a><a href="tel:+0704244657">+0704244657</a><a href="tel:+254704813110">+254704813110</a>Nairobi, Kenya</p></div></div>
+		<div class="container copyright">&copy; 2026 Apex Digital Solutions. <a href="#">Privacy Policy</a> <a href="#">Terms &amp; Conditions</a></div>
+	</footer>
+
+	<script src="script.js" defer></script>
+	<script>
+		(function(){
+			if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+			const obs = new IntersectionObserver((entries)=>{
+				entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); });
+			},{threshold:0.12});
+			document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+		})();
+	</script>
+</body>
+</html>
