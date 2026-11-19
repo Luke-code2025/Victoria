@@ -1,35 +1,23 @@
-# Apex Digital — Node Email Server
+# Apex Digital Solutions
 
-This repository includes a lightweight Node/Express server that accepts contact form submissions and forwards them to an email address via SMTP using `nodemailer`.
+A responsive marketing website for Apex Digital Solutions with a Node.js/Express inquiry API. The frontend is semantic HTML, CSS and vanilla JavaScript; inquiry submissions are emailed through SMTP with Nodemailer. No database or frontend framework is used.
 
-Quick start
+## Run locally
 
-1. Install dependencies:
+1. Install Node.js (20 or newer), then install the project dependencies:
 
-```bash
-npm install
-```
+   ```sh
+   npm install
+   ```
 
-2. Copy the example environment file and fill in your SMTP credentials:
+2. Copy `.env.example` to `.env` and set your SMTP credentials, sender, recipient and allowed origin. For local use, keep `ALLOWED_ORIGIN=http://localhost:3000`. If you host the frontend on another origin, set that exact origin instead.
 
-```bash
-cp .env.example .env
-# edit .env and add your SMTP host/user/pass and desired TO_EMAIL
-```
+3. Start the website and API:
 
-3. Start the server:
+   ```sh
+   npm start
+   ```
 
-```bash
-npm start
-```
+4. Open [http://localhost:3000](http://localhost:3000). The Express server serves the website and accepts `POST /api/inquiry`; the frontend submits JSON to this same-origin endpoint.
 
-By default the server listens on port `3000` and exposes `POST /api/contact` which expects `name`, `email`, and `message` fields (form encoded or JSON).
-
-Integration with the front-end
-
-- In `index.html` set the form's `data-endpoint` to the server URL (e.g. `https://your-domain.com/api/contact` or `/api/contact` when hosting both app and server together).
-- The front-end already attempts to POST to the configured endpoint and falls back to opening the user's mail client when a server isn't configured or is unreachable.
-
-Security note
-
-Do not commit your real `.env` to version control. Use secure environment management for production.
+The inquiry endpoint requires a name, valid email, selected service, project details and message. Budget is optional. SMTP settings are required to send email; until configured, the API responds with `503` and a clear error. Allowed origins can be a comma-separated list. Keep `.env` private and never commit real credentials.

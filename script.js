@@ -1,69 +1,73 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navList = document.querySelector('.nav-list');
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-if (navToggle && navList) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = navList.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!expanded));
+    navLinks.classList.toggle('is-open', !expanded);
   });
-  navList.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    navList.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  }));
+
+  navLinks.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('is-open');
+    }
+  });
 }
 
-const contactForm = document.querySelector('#contact-form');
-const formStatus = document.querySelector('.form-status');
-
-document.querySelectorAll('a[href="tel:+0704244657"]').forEach((phoneLink) => {
-  phoneLink.href = 'tel:+254704244657';
-  phoneLink.textContent = '+254704244657';
-});
-
-document.querySelectorAll('.contact-details').forEach((contactDetails) => {
-  contactDetails.querySelectorAll('p').forEach((item) => {
-    const label = item.querySelector('strong')?.textContent.trim();
-    if (label === 'Email') {
-      item.innerHTML = '<strong>Email</strong><br><a href="mailto:alalopoko@gmail.com">alalopoko@gmail.com</a>';
-    }
-    if (label === 'Phone') {
-      item.innerHTML = '<strong>Phone</strong><br><a href="tel:+254704244657">+254704244657</a><br><a href="tel:+254704813110">+254704813110</a>';
-    }
-    if (label === 'Location') {
-      item.innerHTML = '<strong>Location</strong><br>Nairobi, Kenya';
-    }
+document.querySelectorAll('[data-service]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const service = document.querySelector('#service');
+    if (service instanceof HTMLSelectElement) service.value = link.dataset.service;
   });
 });
 
-document.querySelectorAll('.site-footer').forEach((footer) => {
-  const contactHeading = [...footer.querySelectorAll('h3')].find((heading) => heading.textContent.trim() === 'Contact');
-  const contactBlock = contactHeading?.parentElement;
-  const contactText = contactBlock?.querySelector('p');
-  if (contactText) {
-    contactText.innerHTML = '<a href="mailto:alalopoko@gmail.com">alalopoko@gmail.com</a><a href="tel:+254704244657">+254704244657</a><a href="tel:+254704813110">+254704813110</a>Nairobi, Kenya';
-  }
-});
+const year = document.querySelector('#year');
+if (year) year.textContent = String(new Date().getFullYear());
 
-if (contactForm && formStatus) {
-  contactForm.addEventListener('submit', (event) => {
+const inquiryForm = document.querySelector('#inquiry-form');
+const formStatus = document.querySelector('#form-status');
+
+if (inquiryForm instanceof HTMLFormElement && formStatus instanceof HTMLElement) {
+  inquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
-    const formData = new FormData(contactForm);
-    const subject = `Website inquiry from ${formData.get('name')}`;
-    const details = [
-      `Full Name: ${formData.get('name')}`,
-      `Business / Organization: ${formData.get('business') || 'Not provided'}`,
-      `Email: ${formData.get('email')}`,
-      `Phone: ${formData.get('phone') || 'Not provided'}`,
-      `Service Needed: ${formData.get('service')}`,
-      `Budget Range: ${formData.get('budget') || 'Not provided'}`,
-      `Preferred Contact Method: ${formData.get('contact-method') || 'Not provided'}`,
-      '',
-      'Project Description:',
-      formData.get('message')
-    ].join('\\n');
-    formStatus.textContent = 'Opening your email app with the inquiry details.';
-    window.location.href = `mailto:alalopoko@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(details)}`;
+    formStatus.textContent = '';
+    formStatus.removeAttribute('data-state');
+
+    if (!inquiryForm.reportValidity()) return;
+
+    const submitButton = inquiryForm.querySelector('button[type="submit"]');
+    const submitLabel = submitButton?.querySelector('.submit-label');
+    if (!(submitButton instanceof HTMLButtonElement)) return;
+
+    submitButton.disabled = true;
+    if (submitLabel) submitLabel.textContent = 'Sending…';
+
+    const formData = new FormData(inquiryForm);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'We could not send your inquiry. Please try again.');
+      }
+
+      inquiryForm.reset();
+      formStatus.dataset.state = 'success';
+      formStatus.textContent = result.message || 'Thanks for reaching out. We’ll be in touch soon.';
+    } catch (error) {
+      formStatus.dataset.state = 'error';
+      formStatus.textContent = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+    } finally {
+      submitButton.disabled = false;
+      if (submitLabel) submitLabel.textContent = 'Send your inquiry';
+    }
   });
 }
